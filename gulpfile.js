@@ -1,7 +1,10 @@
 //https://www.youtube.com/watch?v=qSZvGlIKGPg
 const { watch, series, parallel }   = require("gulp");
 const browserSync                   = require("browser-sync").create();
+
 const path                          = require("./config/path.js");
+const app                           = require("./config/app.js");
+
 const clear                         = require("./task/clear.js");
 const pug                           = require("./task/pug.js");
 const scss                          = require("./task/scss.js");
@@ -9,7 +12,6 @@ const css                           = require("./task/css.js");
 const js                            = require("./task/js.js");
 const img                           = require("./task/img.js");
 const font                          = require("./task/font.js");
-
 
 const server = () => {
     browserSync.init({
@@ -27,6 +29,16 @@ const watcher = () => {
     watch(path.font.watch, font).on("all",browserSync.reload);
 }
 
+const build = series(
+    clear,
+    parallel(pug, scss, js, img, font)
+);
+
+const dev = series(
+    build,
+    parallel(watcher, server)
+);
+
 // Tasks
 exports.pug     = pug;
 exports.scss    = scss;
@@ -37,8 +49,6 @@ exports.font    = font;
 exports.watch   = watcher;
 exports.clear   = clear;
 
-exports.dev = series(
-    clear,
-    parallel(pug, scss, js, img, font),
-    parallel(watcher, server)
-);
+exports.default = app.isProd
+    ? build
+    : dev;

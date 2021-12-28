@@ -11,9 +11,10 @@ const size = require("gulp-size");
 const shorthand = require("gulp-shorthand");
 const groupCssNediaQueries = require("gulp-group-css-media-queries");
 const webpCss = require("gulp-webp-css");
+const app = require("../config/app.js");
 
 const css = cb => {
-    return src(path.css.src, { sourcemaps: true })
+    return src(path.css.src, { sourcemaps: app.isDev })
         .pipe(plumber({
             errorHandler: notify.onError(error => ({
                 title: "CSS",
@@ -27,11 +28,11 @@ const css = cb => {
         .pipe(shorthand())
         .pipe(groupCssNediaQueries())
         .pipe(size({ title: "main.css" }))
-        .pipe(dest(path.css.dest, { sourcemaps: true }))
+        .pipe(dest(path.css.dest, { sourcemaps: app.isDev }))
         .pipe(rename({ suffix: ".min" }))
         .pipe(csso())
         .pipe(size({ title: "main.min.css" }))
-        .pipe(dest(path.css.dest, { sourcemaps: true }));
+        .pipe(dest(path.css.dest, { sourcemaps: app.isDev }));
 }
 
 module.exports = css
