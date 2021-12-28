@@ -26,5 +26,19 @@ module.exports = {
 
     fonter: {
         formats:["ttf","woff","eot","svg"]
+    },
+
+    favicons: {
+        icons: {
+            facicons: true,
+            appleicon: true,
+            android: true,
+            windows: false,
+            yandex: false,
+            coast: false,
+            firefox: false,
+            appleStartup: false
+        },
+        path: "img/favicon/"
     }
 }

@@ -21,7 +21,7 @@ const watcher = () => {
 
 const build = $.gulp.series(
     task.clear,
-    $.gulp.parallel(task.pug, task.scss, task.js, task.img, task.font)
+    $.gulp.parallel(task.pug, task.scss, task.js, task.img, task.font, task.favicon)
 );
 
 const dev = $.gulp.series(
@@ -36,6 +36,7 @@ exports.scss    = task.scss;
 exports.css     = task.css;
 exports.js      = task.js;
 exports.img     = task.img;
+exports.favicon = task.favicon;
 exports.font    = task.font;
 exports.watch   = task.watcher;
 exports.clear   = task.clear;

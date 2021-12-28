@@ -44,5 +44,12 @@ module.exports = {
         src: pathSrc + "/font/*.{eot,ttf,otf,otc,ttc,woff,woff2,svg}",
         watch: pathSrc + "/font/**/*.{eot,ttf,otf,otc,ttc,woff,woff2,svg}",
         dest: pathDest + "/font"
+    },
+
+    favicon: {
+        src: pathSrc + "/img/favicon/favicon.svg",
+        watch: pathSrc + "/img/favicon/favicon.svg",
+        dest: pathDest + "/img/favicon"
     }
+    
 }
