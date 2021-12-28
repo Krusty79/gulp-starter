@@ -12,11 +12,11 @@ const requierDir = require("require-dir");
 const task = requierDir("./task", {recurse: true});
 
 const watcher = () => {
-    watch($.path.pug.watch, task.pug);
-    watch($.path.scss.watch, task.scss);
-    watch($.path.js.watch, task.js);
-    watch($.path.img.watch, task.img);
-    watch($.path.font.watch, task.font);
+    $.gulp.watch($.path.pug.watch, task.pug);
+    $.gulp.watch($.path.scss.watch, task.scss);
+    $.gulp.watch($.path.js.watch, task.js);
+    $.gulp.watch($.path.img.watch, task.img);
+    $.gulp.watch($.path.font.watch, task.font);
 }
 
 const build = $.gulp.series(
@@ -31,6 +31,7 @@ const dev = $.gulp.series(
 
 // Tasks
 exports.pug     = task.pug;
+exports.html    = task.html;
 exports.scss    = task.scss;
 exports.css     = task.css;
 exports.js      = task.js;
