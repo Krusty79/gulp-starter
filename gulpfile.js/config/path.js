@@ -1,5 +1,6 @@
-const pathSrc = "./src";
-const pathDest = "./public";
+const pathSrc = "./src/benefits-estimator";
+//const pathDest = "./public/benefits-estimator";
+const pathDest = "/var/www/projects/wordpress.konductor.net/wp-content/plugins/benefits-estimator";
 
 module.exports = {
     root: pathDest,
@@ -10,6 +11,12 @@ module.exports = {
         dest: pathDest
     },
 
+    php: {
+        src: pathSrc + "/**/*.php",
+        watch: pathSrc + "/**/*.php",
+        dest: pathDest
+    },
+
     pug: {
         src: pathSrc + "/pug/*.pug",
         watch: pathSrc + "/pug/**/*.pug",
@@ -17,9 +24,9 @@ module.exports = {
     },
 
     css: {
-        src: pathSrc + "/css/*.css",
-        watch: pathSrc + "/css/**/*.css",
-        dest: pathDest + "/css"
+        src: pathSrc + "/assets/css/*.css",
+        watch: pathSrc + "/assets/css/**/*.css",
+        dest: pathDest + "/assets/css"
     },
 
     scss: {
@@ -29,15 +36,15 @@ module.exports = {
     },
 
     js: {
-        src: pathSrc + "/js/*.js",
-        watch: pathSrc + "/js/**/*.js",
-        dest: pathDest + "/js"
+        src: pathSrc + "/assets/js/*.js",
+        watch: pathSrc + "/assets/js/**/*.js",
+        dest: pathDest + "/assets/js"
     },
 
     img: {
-        src: pathSrc + "/img/*.{png,jpg,jpeg,gif,svg}",
-        watch: pathSrc + "/img/**/*.{png,jpg,jpeg,gif,svg}",
-        dest: pathDest + "/img"
+        src: pathSrc + "/assets/img/*.{png,jpg,jpeg,gif,svg}",
+        watch: pathSrc + "/assets/img/**/*.{png,jpg,jpeg,gif,svg}",
+        dest: pathDest + "/assets/img"
     },
 
     font: {
